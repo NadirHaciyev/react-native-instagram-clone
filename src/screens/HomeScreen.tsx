@@ -1,12 +1,20 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Stories from '@/components/home/Stories';
 
 function HomeScreen() {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.main}>
+      <Stories />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  main: {
+    backgroundColor: 'black',
+    flex: 1,
+  },
+});
 
 export default HomeScreen;
