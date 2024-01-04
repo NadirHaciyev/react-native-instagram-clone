@@ -1,24 +1,20 @@
-import {Image, StyleSheet, View} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 
-// Screens
-import ExploreScreen from '@/screens/ExploreScreen';
-import CreatePostScreen from '@/screens/CreatePostScreen';
-import ProfileScreen from '@/screens/ProfileScreen';
-import ReelsScreen from '@/screens/ReelsScreen';
+import {AddCircleIcon, HomeIcon, ReelIcon} from '@/components/icons';
+import {gStyles} from '@/constants';
 
-// Navigators
-import HomeNavigator from './HomeNavigator';
-
-// Icons
-import HomeIcon from '@/components/icons/HomeIcon';
-import ReelIcon from '@/components/icons/ReelIcon';
-import AddCircleIcon from '@/components/icons/AddCircleIcon';
+// Stacks
+import HomeStack from './HomeStack';
+import ExploreStack from './ExploreStack';
+import CreateStack from './CreateStack';
+import ReelStack from './ReelStack';
+import ProfileStack from './ProfileStack';
 
 const Tab = createBottomTabNavigator();
-
-function RootNavigator() {
+function BottomTab() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -29,22 +25,17 @@ function RootNavigator() {
         tabBarShowLabel: false,
       }}>
       <Tab.Screen
-        name="home"
-        component={HomeNavigator}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           tabBarIcon: ({focused}) => (
-            <HomeIcon
-              size={24}
-              stroke="white"
-              strokeWidth={2}
-              fill={focused ? '#fff' : 'none'}
-            />
+            <HomeIcon fill={focused ? '#fff' : 'none'} />
           ),
         }}
       />
       <Tab.Screen
-        name="explore"
-        component={ExploreScreen}
+        name="ExploreStack"
+        component={ExploreStack}
         options={{
           tabBarIcon: ({focused}) => (
             <IonIcon
@@ -56,22 +47,20 @@ function RootNavigator() {
         }}
       />
       <Tab.Screen
-        name="create-post"
-        component={CreatePostScreen}
+        name="CreateStack"
+        component={CreateStack}
         options={{
-          tabBarIcon: () => (
-            <AddCircleIcon stroke="white" size={28} strokeWidth={2} />
-          ),
+          tabBarIcon: () => <AddCircleIcon />,
         }}
       />
       <Tab.Screen
-        name="reels"
-        component={ReelsScreen}
+        name="ReelStack"
+        component={ReelStack}
         options={{
           tabBarIcon: ({focused}) => (
             <ReelIcon
               size={focused ? 36 : 32}
-              stroke={focused ? 'black' : 'white'}
+              color={focused ? 'black' : 'white'}
               strokeWidth={focused ? 1.5 : 2}
               fill={focused ? '#fff' : 'none'}
             />
@@ -79,8 +68,8 @@ function RootNavigator() {
         }}
       />
       <Tab.Screen
-        name="profile"
-        component={ProfileScreen}
+        name="ProfileStack"
+        component={ProfileStack}
         options={{
           tabBarIcon: ({focused}) => (
             <View
@@ -106,17 +95,16 @@ const styles = StyleSheet.create({
   createPostContainer: {borderWidth: 2, borderColor: 'white', borderRadius: 7},
 
   profileContainer: {
+    ...gStyles.flexCenter,
     width: 32,
     height: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 32,
   },
   profileImage: {
     width: 28,
     height: 28,
-    borderRadius: 32,
+    borderRadius: 28,
   },
 });
 
-export default RootNavigator;
+export default BottomTab;

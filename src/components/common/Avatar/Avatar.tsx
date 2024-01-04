@@ -6,10 +6,10 @@ import AvatarWithoutSharing from './AvatarWithoutSharing';
 interface AvatarProps {
   size: number;
   image: string;
-  hasSharing: boolean;
+  hasSharing?: boolean;
 }
 
-function Avatar({size, image, hasSharing}: AvatarProps) {
+function Avatar({size, image, hasSharing = false}: AvatarProps) {
   return (
     <View>
       {hasSharing ? (

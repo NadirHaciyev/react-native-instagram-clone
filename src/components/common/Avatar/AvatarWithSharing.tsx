@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {gStyles, } from '@/constants';
 
 interface AvatarWithSharingProps {
   size: number;
@@ -33,9 +34,7 @@ function AvatarWithSharing({size, image}: AvatarWithSharingProps) {
 
 const styles = StyleSheet.create({
   gradient: {
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...gStyles.flexCenter,
   },
   avatar: {
     borderColor: 'black',

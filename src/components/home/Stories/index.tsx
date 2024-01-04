@@ -1,5 +1,6 @@
 import React from 'react';
-import {FlatList, ScrollView, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
+import {useQuery} from 'react-query';
 import Story from './Story';
 
 const DATA = [
@@ -48,6 +49,7 @@ const DATA = [
 ];
 
 function Stories() {
+
   return (
     <View>
       <FlatList
